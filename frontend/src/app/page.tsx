@@ -1,3 +1,4 @@
+"use client";
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
@@ -5,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import ChatWindow from '../components/ChatWindow'
+import ChatWindow from '../components/ChatWindow';
 
 function App() {
   return (

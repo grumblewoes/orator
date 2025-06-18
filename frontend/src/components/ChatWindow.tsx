@@ -11,11 +11,27 @@ export default function ChatWindow() {
   const [messages, setMessages] = useState<MessageProps[]>([]);
   const [inputValue, setInputValue] = useState('');
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!inputValue.trim()) return;
 
     setMessages(prev => [...prev, { text: inputValue, isUser: true }]);
     setInputValue('');
+
+    try {
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: inputValue }),
+    });
+
+    const data = await response.json();
+    console.log(data.reply);
+
+    setMessages(prev => [...prev, { text: data.reply, isUser: false }]);
+  } catch (error) {
+    console.error('Failed to send message:', error);
+    setMessages(prev => [...prev, { text: 'Error: Could not get a reply.', isUser: false }]);
+  }
   }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
