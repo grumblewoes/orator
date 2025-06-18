@@ -1,12 +1,19 @@
 import express from 'express';
+import Config from './config/config';
+import cors from 'cors';
 
 const app = express();
-const port = 3001;
+app.use(express.json());
+app.use(cors({
+  origin: 'http://localhost:3000',
+}));
 
-app.get('/', (req, res) => {
-  res.send('Hello World with TypeScript!');
+app.post('/chat', (req, res) => {
+  const { message } = req.body;
+  console.log('Received message:', message);
+  res.status(201).json({ reply: `Echo: ${message}` });
 });
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+app.listen(Config.port, () => {
+  console.log(`Server running on port ${Config.port}`);
 });

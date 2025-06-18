@@ -18,14 +18,13 @@ export default function ChatWindow() {
     setInputValue('');
 
     try {
-    const response = await fetch('/api/chat', {
+    const response = await fetch('http://localhost:3001/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message: inputValue }),
     });
 
     const data = await response.json();
-    console.log(data.reply);
 
     setMessages(prev => [...prev, { text: data.reply, isUser: false }]);
   } catch (error) {
