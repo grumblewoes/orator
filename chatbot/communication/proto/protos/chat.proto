@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package protos;
+
+service ChatService {
+    rpc ConsumeClientMessage(ClientMessage) returns (BotReply);
+}
+
+message ClientMessage {
+    string text = 1;
+}
+
+message BotReply {
+    string text = 1;
+}
