@@ -12,4 +12,5 @@ message ClientMessage {
 
 message BotReply {
     string text = 1;
+    string analysis = 2;
 }

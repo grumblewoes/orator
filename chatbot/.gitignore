@@ -1,2 +1,2 @@
-/communication/protos/
-/communication/__pycache__
+/communication/protos/generated/
+__pycache__

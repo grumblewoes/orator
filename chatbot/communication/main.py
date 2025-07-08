@@ -1,6 +1,6 @@
 import grpc
 from concurrent import futures
-from protos import chat_pb2_grpc
+from protos.generated import chat_pb2_grpc
 from service import ChatService
 from config import GRPC_SERVER_PORT
 
